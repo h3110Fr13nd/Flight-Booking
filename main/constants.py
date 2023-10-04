@@ -1,0 +1,5 @@
+FEE = 100.0
+
+COUPONS = {
+    'WELCOME20': 20.0,
+}

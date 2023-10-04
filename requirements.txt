@@ -1,0 +1,7 @@
+Django
+wheel
+reportlab
+xhtml2pdf
+psycopg2-binary
+datetime
+

@@ -1,0 +1,49 @@
+CREATE OR REPLACE FUNCTION seat_count()
+    RETURNS TRIGGER
+    LANGUAGE plpgsql AS
+$$
+DECLARE
+    cat varchar := new.seat_class;
+    es int;
+    bs int;
+    fs int;
+BEGIN
+    IF EXISTS(SELECT * FROM main_flight AS mf WHERE mf.id = new.flight_id) THEN
+        RAISE NOTICE 'INSIDE IF';
+        SELECT available_economy, available_business, available_first INTO es, bs, fs FROM main_flight AS mf WHERE mf.id = new.flight_id;
+        IF ((cat='economy') AND (es=0)) THEN
+            RAISE NOTICE '%',es;
+            RAISE 'No economy seats available';
+        ELSEIF ((cat='business') AND (bs=0)) THEN
+            RAISE 'No business seats available';
+        ELSEIF ((cat='first') AND (fs=0)) THEN
+            RAISE 'No first seats available';
+        END IF;
+    END IF;
+    RETURN NEW;
+END;
+$$
+
+
+
+
+
+
+
+-- DROP TRIGGER capacity_check ON main_ticket;
+
+CREATE TRIGGER capacity_check
+    before insert
+    on main_ticket
+    FOR  EACH ROW EXECUTE PROCEDURE seat_count();
+
+
+
+
+
+
+-- SELECT * FROM main_ticket;
+
+-- INSERT INTO main_ticket
+-- VALUES (211, '7v512D', '29-01-2022', '30-01-2022', 12345.0, 100.0, 'DDS', 0.0, 12445.0, 'economy', '18-01-2022',
+--         '9999999999', 'dds@mail.com', 'Confirmed', 2, 1);

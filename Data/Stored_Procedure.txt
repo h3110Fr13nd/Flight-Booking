@@ -1,0 +1,16 @@
+-- SELECT * FROM main_flight;
+
+CREATE OR REPLACE PROCEDURE insert_flight()
+language plpgsql
+AS $$
+    BEGIN
+        INSERT INTO main_flight VALUES (11, '06:05:00', '09:10:00', '09:45:00', 'Boeing 787I', 'Air India', 48718.0, 132626.0, 207945.0, 186, 138, 19, 29, 10, 16);
+        INSERT INTO main_flight VALUES (12,'04:05:00', '09:35:00', '08:10:00', 'Boeing 787', 'Virgin Atlantic', 48718.0, 132626.0, 207945.0, 186, 138, 19, 29, 10, 6);
+        INSERT INTO main_flight VALUES (13, '10:55:00', '08:30:00', '23:55:00', 'Boeing 787', 'Virgin Atlantic', 51774.0, 84544.0, 164061.0, 186, 138, 19, 29, 6, 10);
+        INSERT INTO main_flight VALUES (15,'07:00:00', '04:10:00', '11:10:00', 'Airbus A320', 'Indigo', 10718.0, 22626.0, 37945.0, 120, 120, 0, 0, 10, 3);
+        COMMIT;
+        END;
+    $$
+
+-- CALL insert_flight();
+-- SELECT * FROM main_flight;
