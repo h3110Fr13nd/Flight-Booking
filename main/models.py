@@ -77,6 +77,8 @@ TICKET_STATUS =(
     ('CONFIRMED', 'Confirmed'),
     ('CANCELLED', 'Cancelled')
 )
+# Make a model for ticket
+
 
 class Ticket(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,related_name="bookings", blank=True, null=True)
