@@ -1,6 +1,6 @@
 FROM python:3.9.18
 
-COPY . .
+COPY . ./app
 RUN pip install -r requirements.txt
 
 RUN python manage.py migrate
