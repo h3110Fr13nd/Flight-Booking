@@ -16,25 +16,6 @@ from main.utils import render_to_pdf, createticket, createWeekDays, addPlaces, a
 from main.constants import FEE, COUPONS
 
 
-try:
-    if len(Week.objects.all()) == 0:
-        createWeekDays()
-
-    if len(Place.objects.all()) == 0:
-        addPlaces()
-
-    if len(Flight.objects.all()) == 0:
-        
-        print("Do you want to add flights in the Database? (y/n)")
-        if input().lower() in ['y', 'yes']:
-            addDomesticFlights()
-            print("Flights added successfully.")
-            
-except Exception as e:
-    print(e)
-    print("Error in adding flights to the database.")
-    
-
 # Create your views here.
 
 def index(request):

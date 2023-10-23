@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-@v!)^%0oyo&+nb^2wsuxe4*q73tuc()$($#a2a-h!&^96oeav=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'main',
 ]
 
@@ -86,13 +87,17 @@ WSGI_APPLICATION = 'Flight_DBMS.wsgi.application'
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '5432',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'postgres',
+    #     'USER': 'postgres',
+    #     'PASSWORD': os.environ.get('DB_PASSWORD'),
+    #     'HOST': 'localhost',
+    #     'PORT': '5432',
+    # }
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
