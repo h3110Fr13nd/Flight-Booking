@@ -2,6 +2,7 @@
 
 A flight booking Django application written in Python, HTML, CSS & Javascript. It uses PostgreSQL Database to store all the data.
 
+
 ### Installation
 
 - Install Docker
@@ -33,6 +34,7 @@ A flight booking Django application written in Python, HTML, CSS & Javascript. I
   ```bash
   visudo -f /etc/sudoers
   ```
+
   - Add the following at the end of the file
   - ```
     jenkins ALL= NOPASSWD: ALL
@@ -46,3 +48,12 @@ A flight booking Django application written in Python, HTML, CSS & Javascript. I
 - Save and build.
 - Flight Booking Website : http://ec2-54-196-232-139.compute-1.amazonaws.com:8001
 - Jenkins : http://ec2-54-196-232-139.compute-1.amazonaws.com:8080
+
+
+#### File Structure
+
+- Dockerfile - Contains the build method for container
+- Data/ - Contains all the code for Flight data collection from Tequila APIs and the data as CSV files.
+- Flight_DBMS/ - Core Django Project
+- main/ - Views and Logic Of Django Application
+- scripts/ - fixture script for adding data from csv to db.
